@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1392691_1vwjxs2varn.css" />
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+      	
+      	mui.plusReady(function(){
+      		plus.navigator.setStatusBarBackground("#333333");
+      		plus.navigator.setStatusBarStyle("light");
+      	});
+    </script>
+    
+   
+</head>
+<body>
+	
+	<header class="mui-bar mui-bar-nav title">
+	    <h1 class="mui-title title-color"><b>LoreWo-Chat</b></h1>
+	</header>
+	
+	
+	
+	
+	<nav class="mui-bar mui-bar-tab">
+	    <a class="mui-tab-item mui-active" tabindex="0">
+	        <span class="mui-icon iconfont icon-chat"></span>
+	        <span class="mui-tab-label">撩我</span>
+	        
+	    </a>
+	    
+	    <a class="mui-tab-item" tabindex="1">
+	        <span class="mui-icon iconfont icon-tongxunlu1" ></span>
+	        <span class="mui-tab-label">通讯录</span>
+	    </a>
+	    
+	    <a class="mui-tab-item" tabindex="2">
+	        <span class="mui-icon iconfont icon-zhinanzhen"></span>
+	        <span class="mui-tab-label">发现</span>
+	    </a>
+	    
+	    <a class="mui-tab-item" tabindex="3">
+	        <span class="mui-icon iconfont icon-wo"></span>
+	        <span class="mui-tab-label">我</span>
+	    </a>
+	</nav>
+	
+	
+	<script type="text/javascript">
+		var lorewoArray = [
+		{
+			pageId:"chat-list.html",
+			pageUrl:"chat-list.html"
+		},
+		{
+			pageId:"contact.html",
+			pageUrl:"contact.html"
+		},
+		{
+			pageId:"discover.html",
+			pageUrl:"discover.html"
+		},
+		{
+			pageId:"chat-me.html",
+			pageUrl:"chat-me.html"
+		}
+	];
+	
+	var chatStyle = {
+		top:"44px",
+		bottom:"50px"
+	}
+	
+	mui.plusReady(function(){
+		
+	// 禁止返回到登录注册页面
+			mui.back = function() {
+				return false;
+			}
+		
+		//获取当前的webview对象
+		var indexWebView = plus.webview.currentWebview();
+		
+		//向主页面中追加webview
+		for(var i=0;i<lorewoArray.length;i++){
+			var page = plus.webview.create(lorewoArray[i].pageUrl,lorewoArray[i].pageId,chatStyle);
+			page.hide();
+			//追加子页面到主页面
+			indexWebView.append(page);
+			
+		}
+		plus.webview.show(lorewoArray[0].pageId);		
+	
+		
+		//批量绑定tap事件，展示不同的页面
+		mui(".mui-bar-tab").on("tap","a",function(){
+			var tabindex = this.getAttribute("tabindex");
+			//显示点击的tap选项对应的页面
+			plus.webview.show(lorewoArray[tabindex].pageId,"fade-in",10);
+		for(var i =0 ;i<lorewoArray.length;i++){
+			if(i!=tabindex){
+				plus.webview.hide(lorewoArray[i].pageId,"fade-out",10);
+			}
+		}
+		});
+	})
+	</script>
+</body>
+</html>

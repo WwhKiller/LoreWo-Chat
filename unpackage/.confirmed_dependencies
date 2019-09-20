@@ -1,0 +1,28 @@
+{
+	"index.html": {
+		"resources": [
+			"chat-list.html"
+		],
+		"refer": [
+			"contact.html",
+			"chat-me.html",
+			"chat-list.html",
+			"discover.html"
+		]
+	},
+	"login.html": {
+		"refer": [
+			"index.html"
+		]
+	},
+	"chat-me.html": {
+		"refer": [
+			"myface.html"
+		]
+	},
+	"myface.html": {
+		"refer": [
+			"plugin/v3.1.6/myface-uploader.html"
+		]
+	}
+}
