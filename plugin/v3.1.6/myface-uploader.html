@@ -88,6 +88,8 @@
 						// 上传头像
 						var user = app.getUserGlobalInfo();
 						// 与后端联调
+						console.log(user.id);
+						console.log(base64Url);
 						mui.ajax(app.serverUrl + "/user/uploadFaceBase64",{
 							data:{
 								userId:user.id,
