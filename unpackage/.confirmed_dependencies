@@ -24,5 +24,12 @@
 		"refer": [
 			"plugin/v3.1.6/myface-uploader.html"
 		]
+	},
+	"plugin/v3.1.6/myface-uploader.html": {
+		"resources": [
+			"plugin/v3.1.6/css/cropper.css",
+			"plugin/v3.1.6/css/main.css",
+			"plugin/v3.1.6/js/cropper.js"
+		]
 	}
 }
